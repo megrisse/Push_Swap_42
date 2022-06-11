@@ -6,12 +6,12 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 22:01:39 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/08 02:34:56 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/12 00:20:39 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -22,17 +22,17 @@
 
 typedef struct Stack
 {
-    int             *array_a;
-    int             *array_b;
-    int             *array_s;
-    int             size;
-    int             size_a;
-    int             size_b;
-    int             last_a;
-    int             last_b;
-    int             head_a;
-    int             head_b;
-}t_stack;
+	int		*array_a;
+	int		*array_b;
+	int		*array_s;
+	int		size;
+	int		size_a;
+	int		size_b;
+	int		last_a;
+	int		last_b;
+	int		head_a;
+	int		head_b;
+}		t_stack;
 
 /******* libft *******/
 
@@ -54,11 +54,27 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*get_next_line(int fd);
 
 /********* parse ********/
-int     check_array(char **tab);
+
+int		check_array(char **tab);
 char	**get_args(int ac, char **av);
 
 /********* stack *********/
-t_stack     *init_stacks(int size);
-void         push(t_stack *array, int value);
+t_stack	*init_stacks(int size);
+void	push(t_stack *array, int value);
+int		is_sortd(t_stack *array);
+
+/******** instructions  *****/
+void	sa(t_stack *stack, char *str);
+void	pa(t_stack *stack, char *str);
+void	ra(t_stack *stack, char *str);
+void	rra(t_stack *stack, char *str);
+void	sb(t_stack *stack, char *str);
+void	pb(t_stack *stack, char *str);
+void	rb(t_stack *stack, char *str);
+void	rrb(t_stack *stack, char *str);
+
+/********* sort ***********/
+void	sort_3(t_stack *array);
+
 
 #endif
