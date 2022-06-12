@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 23:42:31 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/12 00:22:13 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/12 05:05:26 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	sort_3(t_stack *array)
 {
-	printf("%d\n", array->array_a[0]);
-	printf("%d\n", array->array_a[1]);
-	printf("%d\n", array->array_a[2]);
 	while (!is_sortd(array))
 	{
 		if (array->array_a[array->head_a] > array->array_a[array->last_a])
@@ -26,5 +23,44 @@ void	sort_3(t_stack *array)
 			sa(array, "sa\n");
 		else
 			ra(array, "ra\n");
+	}
+}
+
+void	push_max_nd_min(t_stack *stack)
+{
+	int	max;
+	int	min;
+	int	i;
+
+	i = 0;
+	max = get_maximum(stack);
+	min = get_minimum(stack);
+	// printf("%d\n%d\n", max, min);
+	while (i < 2)
+	{
+		if (stack->array_a[stack->head_a] == max
+			|| stack->array_a[stack->head_a] == min)
+		{
+			pb(stack, "pb\n");
+			i++;
+		}
+		else
+			ra(stack, "ra\n");
+	}
+}
+
+void	sort_5(t_stack *stack)
+{
+	push_max_nd_min(stack);
+	sort_3(stack);
+	while (stack->head_b < stack->size)
+	{
+		if (stack->array_b[stack->head_b] > stack->array_a[stack->head_a])
+		{
+			pa(stack, "pa\n");
+			ra(stack, "ra\n");
+		}
+		else
+			pa(stack, "pa\n");
 	}
 }

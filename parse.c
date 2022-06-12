@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 22:28:49 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/07 22:29:31 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/12 02:41:27 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,33 +32,33 @@ int	is_double(char **t)
 	return (1);
 }
 
-int check_array(char **tab)
+int	check_array(char **tab)
 {
-    int i;
-    int x;
+	int	i;
+	int	x;
 
-    i = 0;
-    while (tab[i])
-    {
-        x = 0;
-        while (tab[i][x])
-        {
-            if (tab[i][x] == '-' || tab[i][x] == '+')
-                x++;
-            if (!ft_isdigit(tab[i][x]) || is_double(tab) == 0
-                || ft_atoi(&tab[i][x]) < PS_MIN
-                || ft_atoi(&tab[i][x]) > PS_MAX)
-                return (0);
-            while (ft_isdigit(tab[i][x]) == 1)
-            {
-                if (tab[i][x + 1] == '-' || tab[i][x + 1] == '+')
-                    return (0);
-                x++;
-            }
-        }
-        i++;
-    }
-    return (1);
+	i = 0;
+	while (tab[i])
+	{
+		x = 0;
+		while (tab[i][x])
+		{
+			if (tab[i][x] == '-' || tab[i][x] == '+')
+				x++;
+			if (!ft_isdigit(tab[i][x]) || is_double(tab) == 0
+				|| ft_atoi(&tab[i][x]) < PS_MIN
+				|| ft_atoi(&tab[i][x]) > PS_MAX)
+				return (0);
+			while (ft_isdigit(tab[i][x]) == 1)
+			{
+				if (tab[i][x + 1] == '-' || tab[i][x + 1] == '+')
+					return (0);
+				x++;
+			}
+		}
+		i++;
+	}
+	return (1);
 }
 
 static	size_t	count_espace(char *av)

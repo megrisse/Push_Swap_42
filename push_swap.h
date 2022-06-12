@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 22:01:39 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/12 00:20:39 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/12 03:27:47 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	**get_args(int ac, char **av);
 
 /********* stack *********/
 t_stack	*init_stacks(int size);
-void	push(t_stack *array, int value);
+void	push(t_stack *array, int value, int i);
 int		is_sortd(t_stack *array);
 
 /******** instructions  *****/
@@ -72,9 +72,11 @@ void	sb(t_stack *stack, char *str);
 void	pb(t_stack *stack, char *str);
 void	rb(t_stack *stack, char *str);
 void	rrb(t_stack *stack, char *str);
+int		get_minimum(t_stack *array);
+int		get_maximum(t_stack *array);
 
 /********* sort ***********/
 void	sort_3(t_stack *array);
-
+void	sort_5(t_stack *stack);
 
 #endif

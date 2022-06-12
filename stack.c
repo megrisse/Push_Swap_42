@@ -6,15 +6,15 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 22:08:55 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/11 23:52:10 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/12 04:58:48 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack *init_stacks(int size)
+t_stack	*init_stacks(int size)
 {
-	t_stack *tab;
+	t_stack	*tab;
 
 	tab = (t_stack *) malloc(sizeof(*tab));
 	tab->array_a = (int *) malloc(sizeof(int) * size);
@@ -26,14 +26,13 @@ t_stack *init_stacks(int size)
 	tab->last_b = size - 1;
 	tab->size_a = tab->size;
 	tab->size_b = 0;
+	tab->size = size;
 	return (tab);
 }
 
-void	push(t_stack *array, int value)
+void	push(t_stack *array, int value, int i)
 {
-	if (array->last_a == array->size - 1)
-		return ;
-	array->array_a[array->last_a] = value;
+	array->array_a[i] = value;
 }
 
 int	is_sortd(t_stack *array)

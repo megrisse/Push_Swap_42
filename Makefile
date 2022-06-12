@@ -6,7 +6,7 @@
 #    By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 21:48:26 by megrisse          #+#    #+#              #
-#    Updated: 2022/06/11 23:48:15 by megrisse         ###   ########.fr        #
+#    Updated: 2022/06/12 03:28:28 by megrisse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC =	utils/ft_atoi.c\
 		utils/ft_bzero.c\
 		instructions/instructions.c\
 		instructions/instructions1.c\
+		instructions/instructions2.c\
 		push_swap.c\
 		parse.c\
 		stack.c\
