@@ -6,11 +6,17 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 23:42:31 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/12 05:05:26 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/12 20:38:08 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	sort_2(t_stack *array)
+{
+	if (array->array_a[array->head_a] > array->array_a[array->head_a + 1])
+		sa(array, "sa\n");
+}
 
 void	sort_3(t_stack *array)
 {
@@ -35,7 +41,6 @@ void	push_max_nd_min(t_stack *stack)
 	i = 0;
 	max = get_maximum(stack);
 	min = get_minimum(stack);
-	// printf("%d\n%d\n", max, min);
 	while (i < 2)
 	{
 		if (stack->array_a[stack->head_a] == max

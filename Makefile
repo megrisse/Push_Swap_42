@@ -6,7 +6,7 @@
 #    By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 21:48:26 by megrisse          #+#    #+#              #
-#    Updated: 2022/06/12 03:28:28 by megrisse         ###   ########.fr        #
+#    Updated: 2022/06/12 21:14:21 by megrisse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC =	utils/ft_atoi.c\
 		parse.c\
 		stack.c\
 		sort.c\
+		sort1.c\
 
 OBJS = $(SRC:.c=.o)
 

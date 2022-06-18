@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 23:00:09 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/11 23:57:12 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/18 04:32:34 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	sa(t_stack *stack, char *str)
 	stack->array_a[stack->head_a] = stack->array_a[stack->head_a + 1];
 	stack->array_a[stack->head_a + 1] = tmp;
 	ft_putstr(str);
-
 }
 
 void	pa(t_stack *stack, char *str)

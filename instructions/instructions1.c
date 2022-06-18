@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 03:17:35 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/12 00:10:40 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/18 04:18:28 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	pb(t_stack *stack, char *str)
 		i++;
 	}
 	stack->last_a--;
+	ft_putstr(str);
 	stack->size_a--;
 	stack->size_b++;
-	ft_putstr(str);
 }
 
 void	rb(t_stack *stack, char *str)
@@ -71,5 +71,12 @@ void	rrb(t_stack *stack, char *str)
 		i--;
 	}
 	stack->array_b[stack->head_b] = tmp;
+	ft_putstr(str);
+}
+
+void	rr(t_stack *array, char *str)
+{
+	ra(array, "r");
+	rb(array, "r");
 	ft_putstr(str);
 }

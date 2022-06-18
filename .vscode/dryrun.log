@@ -1,0 +1,26 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/megrisse/Desktop/Push_Swap_42'
+gcc -Wall -Wextra -Werror -g -c utils/ft_atoi.c -o utils/ft_atoi.o
+gcc -Wall -Wextra -Werror -g -c utils/ft_calloc.c -o utils/ft_calloc.o
+gcc -Wall -Wextra -Werror -g -c utils/ft_isdigit.c -o utils/ft_isdigit.o
+gcc -Wall -Wextra -Werror -g -c utils/ft_split.c -o utils/ft_split.o
+gcc -Wall -Wextra -Werror -g -c utils/ft_strlcat.c -o utils/ft_strlcat.o
+gcc -Wall -Wextra -Werror -g -c utils/ft_strlcpy.c -o utils/ft_strlcpy.o
+gcc -Wall -Wextra -Werror -g -c utils/ft_strlen.c -o utils/ft_strlen.o
+ 
+gcc -Wall -Wextra -Werror -g -c utils/get_next_line.c -o utils/get_next_line.o
+gcc -Wall -Wextra -Werror -g -c utils/ft_strjoin.c -o utils/ft_strjoin.o
+gcc -Wall -Wextra -Werror -g -c utils/ft_bzero.c -o utils/ft_bzero.o
+gcc -Wall -Wextra -Werror -g -c instructions/instructions.c -o instructions/instructions.o
+gcc -Wall -Wextra -Werror -g -c instructions/instructions1.c -o instructions/instructions1.o
+gcc -Wall -Wextra -Werror -g -c instructions/instructions2.c -o instructions/instructions2.o
+gcc -Wall -Wextra -Werror -g -c push_swap.c -o push_swap.o
+gcc -Wall -Wextra -Werror -g -c parse.c -o parse.o
+gcc -Wall -Wextra -Werror -g -c stack.c -o stack.o
+gcc -Wall -Wextra -Werror -g -c sort.c -o sort.o
+gcc -Wall -Wextra -Werror -g -c sort1.c -o sort1.o
+gcc -Wall -Wextra -Werror -g utils/ft_atoi.o utils/ft_calloc.o utils/ft_isdigit.o utils/ft_split.o utils/ft_strlcat.o utils/ft_strlcpy.o utils/ft_strlen.o utils/get_next_line.o utils/ft_strjoin.o utils/ft_bzero.o instructions/instructions.o instructions/instructions1.o instructions/instructions2.o push_swap.o parse.o stack.o sort.o sort1.o -o push_swap
+make: Leaving directory `/Users/megrisse/Desktop/Push_Swap_42'
+ 
+make: Circular push_swap <- push_swap dependency dropped.
+
