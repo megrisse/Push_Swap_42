@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 03:17:35 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/18 04:18:28 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/20 02:27:22 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	rrb(t_stack *stack, char *str)
 
 	tmp = stack->array_b[stack->last_b];
 	i = stack->last_b;
-	while (i > 0)
+	while (i > stack->head_b)
 	{
 		stack->array_b[i] = stack->array_b[i - 1];
 		i--;

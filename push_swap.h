@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 22:01:39 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/18 04:06:20 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/20 02:02:44 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ t_stack	*init_stacks(int size);
 void	push(t_stack *array, int value, int i);
 int		is_sortd(t_stack *array);
 void	sort_array_s(t_stack *array);
+void	bubble(int *arr, int n);
+void	bubbleSort(int *arr, int n);
+void 	printArraya(int *arr, int size, t_stack *stack);
+void 	printArrayb(int *arr, int size, t_stack *stack);
 
 /******** instructions  *****/
 void	sa(t_stack *stack, char *str);
@@ -74,7 +78,7 @@ void	rr(t_stack *array, char *str);
 int		get_minimum(t_stack *array);
 int		get_maximum(t_stack *array);
 int		find_value_in_b(int value, t_stack *array);
-
+int	get_idx(t_stack *array);
 /********* sort ***********/
 void	sort_2(t_stack *array);
 void	sort_3(t_stack *array);

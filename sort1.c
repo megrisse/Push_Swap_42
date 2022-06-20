@@ -6,32 +6,60 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 20:13:27 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/18 05:04:18 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/20 03:03:03 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_to_b_100(t_stack *array, int min, int avg)
+void	stacpy(t_stack *stack)
 {
-	while (array->size_b <= min + avg)
+	int i = 0;
+	while (i <= stack->last_a)
 	{
-		if (array->array_a[array->head_a] <= avg + min)
+		stack->array_s[i] = stack->array_a[i];
+		i++;
+	}
+}
+
+void	push_to_b_100(t_stack *array)
+{
+	int	p1;
+	int	p2;
+	int	c = 0;
+	
+	p1 = (array->last_a + 1) / 3;
+	p2 = p1 / 2;
+	while (array->last_a > 0)
+	{
+		if (array->array_a[array->head_a] <= array->array_s[p1] && array->array_a[array->head_a] <= array->array_s[p2] && array->size_b >= 2)
+		{
 			pb(array, "pb\n");
-		else if (array->array_b[array->head_b] >= min
-			&& array->array_b[array->head_b] <= min + avg / 2)
-			rr(array, "\n");
+			c++;
+			// puts("tab b : ");
+			// printArray(array->array_b, array->size);
+			rb(array, "rb\n");
+			// puts("tab b : ");
+			// printArray(array->array_b, array->size);
+		}
+		else if (array->array_a[array->head_a] <= array->array_s[p1])
+		{
+			pb(array, "pb\n");
+			c++;
+		// 	puts("tab b : ");
+		// 	printArray(array->array_b, array->size);
+		}
 		else
 			ra(array, "ra\n");
-		if (array->array_b[array->head_b] >= min
-			&& array->array_b[array->head_b] <= min + avg / 2)
-			rb(array, "rb\n");
+		if (c >= p1)
+		{
+			stacpy(array);
+			bubble(array->array_s, array->size_a);
+			p1 = array->last_a / 3;
+			p2 = p1 / 2;
+			c = 0;
+		}
 	}
-	for(int i = array->head_b; i < array->size; i++)
-	{
-		printf("%d\n", array->array_b[i]);
-	}
-	sleep(15);
 }
 
 void	optim_push_back(t_stack *array)
@@ -49,57 +77,44 @@ void	optim_push_back(t_stack *array)
 	pa(array, "pa\n");
 }
 
-void	push_back_to_a(t_stack *array, int index)
+void	push_back_to_a(t_stack *array)
 {
+	int max;
+	int idx;
+	int mid;
 	while (array->head_b < array->size)
 	{
-		index = find_value_in_b(array->array_a[array->head_a] - 1, array);
-		if (index <= array->size_b / 2)
+		mid = ((array->size - array->head_b) / 2) + array->head_b;
+		max = get_maximum(array);
+		idx = get_idx(array);
+		if (idx <= mid)
 		{
-			while (array->array_b[array->head_b]
-				!= array->array_a[array->head_a] - 1)
+			while(array->array_b[array->head_b] != max)
 			{
 				rb(array, "rb\n");
-			printf("%d\n", array->array_b[array->head_b]);
-			printf("%d\n", array->array_a[array->head_a] - 1);
-				sleep(2);
 			}
-			pa(array, "pa\n");
 		}
-		else
+		else if (idx > mid)
 		{
-			optim_push_back(array);
+			while(array->array_b[array->head_b] != max)
+			{
+				rrb(array, "rrb\n");
+			}
 		}
-		while (array->array_a[array->head_a] - 1
-			== array->array_a[array->last_a])
-			rra(array, "rra\n");
+		pa(array, "pa\n");
 	}
 }
 
 void	sort_100_nd_500(t_stack *array, int d)
 {
-	int	min;
-	int	avg;
+	int	p1;
+	int p2;
 	int	index;
 
-	min = 0;
-	avg = array->last_a / d;
+	p1 = array->size / d;
+	p2 = 0;
 	index = 0;
-	for (int i = 0; i <= array->last_a; i++)
-	{
-		printf("stack a : %d\n", array->array_a[i]);
-		printf("stack b : %d\n", array->array_b[i]);
-	}
-	while (array->size_a > 3)
-	{
-		push_to_b_100(array, min, avg);
-		min += avg;
-		avg = array->last_a / d;
-		if (d > 3)
-			d--;
-		if (avg < 5)
-			avg = array->size_a - 3;
-	}
-	sort_3(array);
-	push_back_to_a(array, index);
+	bubble(array->array_s, array->size_a);
+	push_to_b_100(array);
+	push_back_to_a(array);
 }
