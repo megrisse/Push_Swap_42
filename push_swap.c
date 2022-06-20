@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 22:00:22 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/20 03:03:49 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/20 03:15:28 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ int	main(int ac, char **av)
 		sort_5(array);
 	else if (count <= 100)
 		sort_100_nd_500(array, 3);
-	else if (count <= 500)
-		sort_100_nd_500(array, 5);	
+	else
+		sort_100_nd_500(array, 5);
 }

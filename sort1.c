@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 20:13:27 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/20 03:03:03 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/20 03:07:50 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ void	stacpy(t_stack *stack)
 	}
 }
 
-void	push_to_b_100(t_stack *array)
+void	push_to_b_100(t_stack *array, int d)
 {
 	int	p1;
 	int	p2;
 	int	c = 0;
 	
-	p1 = (array->last_a + 1) / 3;
+	p1 = (array->last_a + 1) / d;
 	p2 = p1 / 2;
 	while (array->last_a > 0)
 	{
@@ -55,7 +55,7 @@ void	push_to_b_100(t_stack *array)
 		{
 			stacpy(array);
 			bubble(array->array_s, array->size_a);
-			p1 = array->last_a / 3;
+			p1 = array->last_a / d;
 			p2 = p1 / 2;
 			c = 0;
 		}
@@ -115,6 +115,6 @@ void	sort_100_nd_500(t_stack *array, int d)
 	p2 = 0;
 	index = 0;
 	bubble(array->array_s, array->size_a);
-	push_to_b_100(array);
+	push_to_b_100(array, d);
 	push_back_to_a(array);
 }
