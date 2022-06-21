@@ -6,13 +6,13 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 18:16:26 by megrisse          #+#    #+#             */
-/*   Updated: 2022/05/19 21:59:08 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/21 18:59:08 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-char	*ft_strjoi(char *s1, char *s2)
+static char	*ft_strjoi(char *s1, char *s2)
 {
 	char	*str;
 	size_t	len;
@@ -40,7 +40,7 @@ char	*ft_strjoi(char *s1, char *s2)
 	return (str);
 }
 
-char	*ft_read(char *s, int fd)
+static char	*ft_read(char *s, int fd)
 {
 	char	*buf;
 	int		n;
@@ -64,7 +64,7 @@ char	*ft_read(char *s, int fd)
 	return (s);
 }
 
-char	*change_the_static(char *s)
+static char	*change_the_static(char *s)
 {
 	char	*news;
 	size_t	i;
@@ -92,7 +92,7 @@ char	*change_the_static(char *s)
 	return (news);
 }
 
-char	*line(char *res)
+static char	*line(char *res)
 {
 	char	*line;
 	size_t	l;

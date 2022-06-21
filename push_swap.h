@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 22:01:39 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/20 02:02:44 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/21 00:24:43 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int		*ft_swap(int *a, int *b);
 
 int		check_array(char **tab);
 char	**get_args(int ac, char **av);
+char	**parse_to_stack(int ac, char **av, int *i);
 
 /********* stack *********/
 t_stack	*init_stacks(int size);
@@ -62,8 +63,8 @@ int		is_sortd(t_stack *array);
 void	sort_array_s(t_stack *array);
 void	bubble(int *arr, int n);
 void	bubbleSort(int *arr, int n);
-void 	printArraya(int *arr, int size, t_stack *stack);
-void 	printArrayb(int *arr, int size, t_stack *stack);
+void	printArraya(int *arr, int size, t_stack *stack);
+void	printArrayb(int *arr, int size, t_stack *stack);
 
 /******** instructions  *****/
 void	sa(t_stack *stack, char *str);
@@ -77,8 +78,9 @@ void	rrb(t_stack *stack, char *str);
 void	rr(t_stack *array, char *str);
 int		get_minimum(t_stack *array);
 int		get_maximum(t_stack *array);
-int		find_value_in_b(int value, t_stack *array);
-int	get_idx(t_stack *array);
+int		get_maximum_a(t_stack *array);
+int		get_idx(t_stack *array);
+
 /********* sort ***********/
 void	sort_2(t_stack *array);
 void	sort_3(t_stack *array);

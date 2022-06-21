@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 23:42:31 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/12 20:38:08 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/20 18:54:39 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	push_max_nd_min(t_stack *stack)
 	int	i;
 
 	i = 0;
-	max = get_maximum(stack);
+	max = get_maximum_a(stack);
 	min = get_minimum(stack);
 	while (i < 2)
 	{

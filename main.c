@@ -1,52 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 22:00:22 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/21 19:00:20 by megrisse         ###   ########.fr       */
+/*   Created: 2022/06/20 20:36:34 by megrisse          #+#    #+#             */
+/*   Updated: 2022/06/21 20:32:58 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-void	ft_free(t_stack *array)
+void	read_args(t_stack *array)
 {
-	free(array->array_s);
-	free(array->array_a);
-	free(array->array_b);
-	free(array);
+	char	*tab;
+
+	tab = get_next_line(0);
+	while (tab)
+	{
+		read_instructions(array, tab);
+		free(tab);
+		tab = get_next_line(0);
+	}
+	free(tab);
 }
 
 int	main(int ac, char **av)
 {
-	char		**tab;
-	t_stack		*array;
-	int			count;
-	int			i;
-	int			j;
+	char	**tab;
+	t_stack	*array;
+	int		i;
+	int		x;
 
 	array = (t_stack *) malloc(sizeof(*array));
 	tab = parse_to_stack(ac, av, &i);
-	count = i;
 	array->size = i;
 	array = init_stacks(i);
-	j = -1;
-	while (++j < i)
-		push(array, ft_atoi(tab[j]), j);
-	if (count <= 1)
-		return (0);
-	else if (count == 2)
-		sort_2(array);
-	else if (count == 3)
-		sort_3(array);
-	else if (count <= 5)
-		sort_5(array);
-	else if (count <= 100)
-		sort_100_nd_500(array, 3);
+	x = -1;
+	while (++x < i)
+		push(array, ft_atoi(tab[x]), x);
+	read_args(array);
+	if (is_sortd(array) == 1)
+		write(1, "OK\n", 3);
 	else
-		sort_100_nd_500(array, 5);
-	ft_free(array);
+		write(1, "KO\n", 3);
 }

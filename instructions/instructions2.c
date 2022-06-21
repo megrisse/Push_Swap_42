@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 02:56:35 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/20 02:33:40 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/20 18:49:21 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	get_maximum(t_stack *array)
 int	get_idx(t_stack *array)
 {
 	int	maximum;
-	int idx;
+	int	idx;
 	int	i;
 
 	maximum = array->array_b[array->head_b];
@@ -64,18 +64,20 @@ int	get_idx(t_stack *array)
 	return (idx);
 }
 
-int	find_value_in_b(int value, t_stack *array)
+int	get_maximum_a(t_stack *array)
 {
+	int	maximum;
 	int	i;
 
-	i = array->head_b;
-	while (i <= array->last_b)
+	maximum = array->array_a[0];
+	i = 1;
+	while (i <= array->last_a)
 	{
-		if (array->array_b[i] == value)
-			return (i - array->head_b);
+		if (array->array_a[i] > maximum)
+			maximum = array->array_a[i];
 		i++;
 	}
-	return (0);
+	return (maximum);
 }
 
 int	*ft_swap(int *a, int *b)

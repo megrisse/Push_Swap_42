@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 20:13:27 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/20 03:07:50 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/20 18:46:49 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	stacpy(t_stack *stack)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (i <= stack->last_a)
 	{
 		stack->array_s[i] = stack->array_a[i];
@@ -26,28 +28,25 @@ void	push_to_b_100(t_stack *array, int d)
 {
 	int	p1;
 	int	p2;
-	int	c = 0;
-	
+	int	c;
+
 	p1 = (array->last_a + 1) / d;
 	p2 = p1 / 2;
+	c = 0;
 	while (array->last_a > 0)
 	{
-		if (array->array_a[array->head_a] <= array->array_s[p1] && array->array_a[array->head_a] <= array->array_s[p2] && array->size_b >= 2)
+		if (array->array_a[array->head_a] <= array->array_s[p1]
+			&& array->array_a[array->head_a]
+			<= array->array_s[p2] && array->size_b >= 2)
 		{
 			pb(array, "pb\n");
 			c++;
-			// puts("tab b : ");
-			// printArray(array->array_b, array->size);
 			rb(array, "rb\n");
-			// puts("tab b : ");
-			// printArray(array->array_b, array->size);
 		}
 		else if (array->array_a[array->head_a] <= array->array_s[p1])
 		{
 			pb(array, "pb\n");
 			c++;
-		// 	puts("tab b : ");
-		// 	printArray(array->array_b, array->size);
 		}
 		else
 			ra(array, "ra\n");
@@ -62,26 +61,12 @@ void	push_to_b_100(t_stack *array, int d)
 	}
 }
 
-void	optim_push_back(t_stack *array)
-{
-	while (array->array_b[array->head_b] != array->array_a[array->head_a] - 1)
-	{
-		if ((array->array_a[array->head_a] < array->array_a[array->last_a]
-			|| array->array_a[array->last_a] < array->array_b[array->head_b]))
-		{
-			pa(array, "pa\n");
-			ra(array, "ra\n");
-		}
-		rrb(array, "rrb\n");
-	}
-	pa(array, "pa\n");
-}
-
 void	push_back_to_a(t_stack *array)
 {
-	int max;
-	int idx;
-	int mid;
+	int	max;
+	int	idx;
+	int	mid;
+
 	while (array->head_b < array->size)
 	{
 		mid = ((array->size - array->head_b) / 2) + array->head_b;
@@ -89,14 +74,14 @@ void	push_back_to_a(t_stack *array)
 		idx = get_idx(array);
 		if (idx <= mid)
 		{
-			while(array->array_b[array->head_b] != max)
+			while (array->array_b[array->head_b] != max)
 			{
 				rb(array, "rb\n");
 			}
 		}
 		else if (idx > mid)
 		{
-			while(array->array_b[array->head_b] != max)
+			while (array->array_b[array->head_b] != max)
 			{
 				rrb(array, "rrb\n");
 			}
@@ -108,7 +93,7 @@ void	push_back_to_a(t_stack *array)
 void	sort_100_nd_500(t_stack *array, int d)
 {
 	int	p1;
-	int p2;
+	int	p2;
 	int	index;
 
 	p1 = array->size / d;
