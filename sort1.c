@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 20:13:27 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/20 18:46:49 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/06/21 21:06:19 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,26 @@ void	stacpy(t_stack *stack)
 	}
 }
 
+int	push_t_b_optim(t_stack *array, int p1, int p2, int c)
+{
+	if (array->array_a[array->head_a] <= array->array_s[p1]
+		&& array->array_a[array->head_a]
+		<= array->array_s[p2] && array->size_b >= 2)
+	{
+		pb(array, "pb\n");
+		c++;
+		rb(array, "rb\n");
+	}
+	else if (array->array_a[array->head_a] <= array->array_s[p1])
+	{
+		pb(array, "pb\n");
+		c++;
+	}
+	else
+		ra(array, "ra\n");
+	return (c);
+}
+
 void	push_to_b_100(t_stack *array, int d)
 {
 	int	p1;
@@ -35,21 +55,7 @@ void	push_to_b_100(t_stack *array, int d)
 	c = 0;
 	while (array->last_a > 0)
 	{
-		if (array->array_a[array->head_a] <= array->array_s[p1]
-			&& array->array_a[array->head_a]
-			<= array->array_s[p2] && array->size_b >= 2)
-		{
-			pb(array, "pb\n");
-			c++;
-			rb(array, "rb\n");
-		}
-		else if (array->array_a[array->head_a] <= array->array_s[p1])
-		{
-			pb(array, "pb\n");
-			c++;
-		}
-		else
-			ra(array, "ra\n");
+		c = push_t_b_optim(array, p1, p2, c);
 		if (c >= p1)
 		{
 			stacpy(array);
