@@ -6,7 +6,7 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 20:13:27 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/21 21:06:19 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/08/15 02:18:35 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,14 @@ void	stacpy(t_stack *stack)
 
 int	push_t_b_optim(t_stack *array, int p1, int p2, int c)
 {
-	if (array->array_a[array->head_a] <= array->array_s[p1]
-		&& array->array_a[array->head_a]
+	if (array->array_a[array->head_a] > array->array_s[p1]
+		&& array->array_b[array->head_b] <= array->array_s[p2]
+		&& array->size_b >= 2)
+		rr(array, "\n");
+	else if (array->array_b[array->head_b]
 		<= array->array_s[p2] && array->size_b >= 2)
-	{
-		pb(array, "pb\n");
-		c++;
 		rb(array, "rb\n");
-	}
-	else if (array->array_a[array->head_a] <= array->array_s[p1])
+	if (array->array_a[array->head_a] <= array->array_s[p1])
 	{
 		pb(array, "pb\n");
 		c++;
