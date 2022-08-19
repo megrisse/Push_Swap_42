@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/20 21:01:57 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/21 02:13:40 by megrisse         ###   ########.fr       */
+/*   Created: 2021/11/07 18:38:44 by megrisse          #+#    #+#             */
+/*   Updated: 2022/08/16 00:45:47 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "../push_swap.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-# include <stdio.h>
-# include "./push_swap.h"
+// char	*ft_strchr(char *str, int x)
+// {
+// 	int		i;
+// 	char	ret;
 
-void	rr_b(t_stack *array);
-void	ss(t_stack *array, char *str);
-void	rrr(t_stack *array);
-void	read_instructions(t_stack *array, char *arg);
-char	*get_next_line(int fd);
-
-#endif
+// 	i = 0;
+// 	ret = (unsigned char) x;
+// 	while (str[i] != ret)
+// 	{
+// 		if (str[i] == '\0')
+// 			return (0);
+// 		i++;
+// 	}
+// 	return ((char *) str + i);
+// }

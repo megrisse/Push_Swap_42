@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/05/19 21:48:26 by megrisse          #+#    #+#              #
-#    Updated: 2022/06/21 19:07:46 by megrisse         ###   ########.fr        #
+#    Created: 2022/08/15 22:24:33 by megrisse          #+#    #+#              #
+#    Updated: 2022/08/15 23:57:03 by megrisse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,47 +23,41 @@ FLAGS = -Wall -Wextra -Werror -g
 HEADER = push_swap.h
 BNS_HEADER = checker.h
 
-SRC =	utils/ft_atoi.c\
-		utils/ft_calloc.c\
-		utils/ft_isdigit.c\
-		utils/ft_split.c\
-		utils/ft_strlcat.c\
-		utils/ft_strlcpy.c\
-		utils/ft_strlen.c\
-		utils/ft_strjoin.c\
-		utils/ft_bzero.c\
-		instructions/instructions.c\
-		instructions/instructions1.c\
-		instructions/instructions2.c\
-		push_swap.c\
-		parse.c\
-		stack.c\
-		sort.c\
-		sort1.c\
-			  
+SRC =	mandatory/Libft/ft_atoi.c\
+		mandatory/Libft/ft_isdigit.c\
+		mandatory/Libft/ft_split.c\
+		mandatory/Libft/ft_strlcat.c\
+		mandatory/Libft/ft_strlcpy.c\
+		mandatory/Libft/ft_strlen.c\
+		mandatory/Libft/ft_strjoin.c\
+		mandatory/instructions/instructins_a.c\
+		mandatory/instructions/instructins_b.c\
+		mandatory/instructions/sorting_utils.c\
+		mandatory/push_swap.c\
+		mandatory/parser.c\
+		mandatory/stack_utils.c\
+		mandatory/sort_simple.c\
+		mandatory/sort_advance.c\
 
 OBJS = $(SRC:.c=.o)
 
-BNS_SRC = main.c \
-		  helper.c \
-		  instructions_a.c \
-		  parse.c\
-		  stack.c\
-		  sort.c\
-		  sort1.c\
-		  utils/ft_atoi.c\
-		  utils/ft_calloc.c\
-		  utils/ft_isdigit.c\
-		  utils/ft_split.c\
-		  utils/ft_strlcat.c\
-		  utils/ft_strlcpy.c\
-		  utils/ft_strlen.c\
-		  utils/get_next_line.c\
-		  utils/ft_strjoin.c\
-		  utils/ft_bzero.c\
-		  instructions/instructions.c\
-		  instructions/instructions1.c\
-		  instructions/instructions2.c\
+BNS_SRC = 	mandatory/Libft/ft_atoi.c\
+			mandatory/Libft/ft_isdigit.c\
+			mandatory/Libft/ft_split.c\
+			mandatory/Libft/ft_strlcat.c\
+			mandatory/Libft/ft_strlcpy.c\
+			mandatory/Libft/ft_strlen.c\
+			mandatory/Libft/ft_strjoin.c\
+			mandatory/Libft/get_next_line.c\
+			mandatory/instructions/instructins_a.c\
+			mandatory/instructions/instructins_b.c\
+			mandatory/instructions/sorting_utils.c\
+			mandatory/parser.c\
+			mandatory/stack_utils.c\
+			mandatory/sort_simple.c\
+			mandatory/sort_advance.c\
+			bonus/checker_utils.c\
+			bonus/checker.c\
 
 BNS_OBJS = $(BNS_SRC:.c=.o)
 
@@ -81,12 +75,13 @@ $(BNS) : $(BNS_OBJS)
 	$(CC) $(FLAGS) $(BNS_OBJS) -o $(BNS)
 
 clean : 
-	rm -rf *.o
-	rm -rf utils/*.o
-	rm -rf instructions/*.o
+	rm -rf mandatory/*.o
+	rm -rf mandatory/Libft/*.o
+	rm -rf mandatory/instructions/*.o
+	rm -rf bonus/*.o
 
 fclean : clean
 	rm -rf $(NAME)
 	rm -rf $(BNS)
 
-re : fclean all
+re : fclean all bonus

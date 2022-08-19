@@ -1,72 +1,72 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort1.c                                            :+:      :+:    :+:   */
+/*   sort_advance.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/12 20:13:27 by megrisse          #+#    #+#             */
-/*   Updated: 2022/08/15 02:18:35 by megrisse         ###   ########.fr       */
+/*   Created: 2022/08/15 21:35:57 by megrisse          #+#    #+#             */
+/*   Updated: 2022/08/15 23:06:40 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stacpy(t_stack *stack)
+void	stackcopy(t_stack *stack)
 {
 	int	i;
 
 	i = 0;
 	while (i <= stack->last_a)
 	{
-		stack->array_s[i] = stack->array_a[i];
+		stack->stack_s[i] = stack->stack_a[i];
 		i++;
 	}
 }
 
-int	push_t_b_optim(t_stack *array, int p1, int p2, int c)
+int	optim(t_stack *array, int p1, int p2, int count)
 {
-	if (array->array_a[array->head_a] > array->array_s[p1]
-		&& array->array_b[array->head_b] <= array->array_s[p2]
+	if (array->stack_a[array->head_a] > array->stack_s[p1]
+		&& array->stack_b[array->head_b] <= array->stack_s[p2]
 		&& array->size_b >= 2)
 		rr(array, "\n");
-	else if (array->array_b[array->head_b]
-		<= array->array_s[p2] && array->size_b >= 2)
+	else if (array->stack_b[array->head_b]
+		<= array->stack_s[p2] && array->size_b >= 2)
 		rb(array, "rb\n");
-	if (array->array_a[array->head_a] <= array->array_s[p1])
+	if (array->stack_a[array->head_a] <= array->stack_s[p1])
 	{
 		pb(array, "pb\n");
-		c++;
+		count++;
 	}
 	else
 		ra(array, "ra\n");
-	return (c);
+	return (count);
 }
 
-void	push_to_b_100(t_stack *array, int d)
+void	start_sorting(t_stack *array, int div)
 {
 	int	p1;
 	int	p2;
-	int	c;
+	int	count;
 
-	p1 = (array->last_a + 1) / d;
+	p1 = (array->last_a + 1) / div;
 	p2 = p1 / 2;
-	c = 0;
+	count = 0;
 	while (array->last_a > 0)
 	{
-		c = push_t_b_optim(array, p1, p2, c);
-		if (c >= p1)
+		count = optim(array, p1, p2, count);
+		if (count >= p1)
 		{
-			stacpy(array);
-			bubble(array->array_s, array->size_a);
-			p1 = array->last_a / d;
+			stackcopy(array);
+			bubble_sort(array->stack_s, array->size_a);
+			p1 = array->last_a / div;
 			p2 = p1 / 2;
-			c = 0;
+			count = 0;
 		}
 	}
 }
 
-void	push_back_to_a(t_stack *array)
+void	finish_sorting(t_stack *array)
 {
 	int	max;
 	int	idx;
@@ -76,17 +76,17 @@ void	push_back_to_a(t_stack *array)
 	{
 		mid = ((array->size - array->head_b) / 2) + array->head_b;
 		max = get_maximum(array);
-		idx = get_idx(array);
+		idx = get_max_idx(array);
 		if (idx <= mid)
 		{
-			while (array->array_b[array->head_b] != max)
+			while (array->stack_b[array->head_b] != max)
 			{
 				rb(array, "rb\n");
 			}
 		}
 		else if (idx > mid)
 		{
-			while (array->array_b[array->head_b] != max)
+			while (array->stack_b[array->head_b] != max)
 			{
 				rrb(array, "rrb\n");
 			}
@@ -95,16 +95,16 @@ void	push_back_to_a(t_stack *array)
 	}
 }
 
-void	sort_100_nd_500(t_stack *array, int d)
+void	sort_middle_nd_advance(t_stack *array, int div)
 {
 	int	p1;
 	int	p2;
 	int	index;
 
-	p1 = array->size / d;
+	p1 = array->size / div;
 	p2 = 0;
 	index = 0;
-	bubble(array->array_s, array->size_a);
-	push_to_b_100(array, d);
-	push_back_to_a(array);
+	bubble_sort(array->stack_s, array->size_a);
+	start_sorting(array, div);
+	finish_sorting(array);
 }

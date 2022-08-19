@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 22:08:55 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/21 21:13:38 by megrisse         ###   ########.fr       */
+/*   Created: 2022/08/15 21:36:04 by megrisse          #+#    #+#             */
+/*   Updated: 2022/08/16 19:05:44 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*init_stacks(int size)
+void	stacks_init(t_stack **tab, int size)
 {
-	t_stack	*tab;
-
-	tab = (t_stack *) malloc(sizeof(*tab));
-	tab->array_a = (int *) malloc(sizeof(int) * size);
-	tab->array_b = (int *) malloc(sizeof(int) * size);
-	tab->array_s = (int *) malloc(sizeof(int) * size);
-	tab->head_a = 0;
-	tab->head_b = size;
-	tab->last_a = size - 1;
-	tab->last_b = size - 1;
-	tab->size_a = size;
-	tab->size_b = 0;
-	tab->size = size;
-	return (tab);
+	(*tab)->stack_a = (int *) malloc(sizeof(int) * size);
+	(*tab)->stack_b = (int *) malloc(sizeof(int) * size);
+	(*tab)->stack_s = (int *) malloc(sizeof(int) * size);
+	(*tab)->head_a = 0;
+	(*tab)->head_b = size;
+	(*tab)->last_a = size - 1;
+	(*tab)->last_b = size - 1;
+	(*tab)->size_a = size;
+	(*tab)->size_b = 0;
+	(*tab)->size = size;
 }
 
-void	push(t_stack *array, int value, int i)
+void	push_to_stack(t_stack *array, int value, int i)
 {
-	array->array_a[i] = value;
-	array->array_s[i] = value;
+	array->stack_a[i] = value;
+	array->stack_s[i] = value;
 }
 
 char	**parse_to_stack(int ac, char **av, int *i)
@@ -42,12 +38,12 @@ char	**parse_to_stack(int ac, char **av, int *i)
 
 	if (ac <= 1)
 		exit (0);
-	tab = get_args(ac, av);
-	if (check_array(tab) == 0)
+	tab = parse_args(ac, av);
+	if (check_error(tab) == 1)
 	{
 		write (2, "Error\n", 6);
 		exit (1);
-	}
+	}	
 	while (tab[*i])
 	{
 		(*i)++;
@@ -55,30 +51,30 @@ char	**parse_to_stack(int ac, char **av, int *i)
 	return (tab);
 }
 
-int	is_sortd(t_stack *array)
+int	check_if_sorted(t_stack *array)
 {
 	int	i;
 
 	i = 0;
 	while (i < array->last_a)
 	{
-		if (array->array_a[i] > array->array_a[i + 1])
+		if (array->stack_a[i] > array->stack_a[i + 1])
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-void	bubble(int *arr, int n)
+void	bubble_sort(int *arr, int len)
 {
 	int	i;
 	int	x;
 
 	i = 0;
-	while (i < n - 1)
+	while (i < len - 1)
 	{
 		x = 0;
-		while (x < n - i - 1)
+		while (x < len - i - 1)
 		{
 			if (arr[x] > arr[x + 1])
 				ft_swap(&arr[x], &arr[x + 1]);

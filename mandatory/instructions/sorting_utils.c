@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instructions2.c                                    :+:      :+:    :+:   */
+/*   sorting_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/12 02:56:35 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/20 18:49:21 by megrisse         ###   ########.fr       */
+/*   Created: 2022/08/15 21:36:46 by megrisse          #+#    #+#             */
+/*   Updated: 2022/08/16 18:55:14 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,31 @@ int	get_minimum(t_stack *array)
 	int	minimum;
 	int	i;
 
-	minimum = array->array_a[0];
+	minimum = array->stack_a[0];
 	i = 1;
 	while (i <= array->last_a)
 	{
-		if (array->array_a[i] < minimum)
-			minimum = array->array_a[i];
+		if (array->stack_a[i] < minimum)
+			minimum = array->stack_a[i];
 		i++;
 	}
 	return (minimum);
+}
+
+int	get_maximum_3(t_stack *array)
+{
+	int	maximum;
+	int	i;
+
+	maximum = array->stack_a[0];
+	i = 1;
+	while (i <= array->last_a)
+	{
+		if (array->stack_a[i] > maximum)
+			maximum = array->stack_a[i];
+		i++;
+	}
+	return (maximum);
 }
 
 int	get_maximum(t_stack *array)
@@ -33,51 +49,35 @@ int	get_maximum(t_stack *array)
 	int	maximum;
 	int	i;
 
-	maximum = array->array_b[array->head_b];
+	maximum = array->stack_b[array->head_b];
 	i = array->head_b + 1;
 	while (i <= array->last_b)
 	{
-		if (array->array_b[i] > maximum)
-			maximum = array->array_b[i];
+		if (array->stack_b[i] > maximum)
+			maximum = array->stack_b[i];
 		i++;
 	}
 	return (maximum);
 }
 
-int	get_idx(t_stack *array)
+int	get_max_idx(t_stack *array)
 {
 	int	maximum;
 	int	idx;
 	int	i;
 
-	maximum = array->array_b[array->head_b];
+	maximum = array->stack_b[array->head_b];
 	i = array->head_b + 1;
 	while (i <= array->last_b)
 	{
-		if (array->array_b[i] > maximum)
+		if (array->stack_b[i] > maximum)
 		{
-			maximum = array->array_b[i];
+			maximum = array->stack_b[i];
 			idx = i;
 		}
 		i++;
 	}
 	return (idx);
-}
-
-int	get_maximum_a(t_stack *array)
-{
-	int	maximum;
-	int	i;
-
-	maximum = array->array_a[0];
-	i = 1;
-	while (i <= array->last_a)
-	{
-		if (array->array_a[i] > maximum)
-			maximum = array->array_a[i];
-		i++;
-	}
-	return (maximum);
 }
 
 int	*ft_swap(int *a, int *b)

@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper.c                                           :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/20 21:26:39 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/21 21:13:09 by megrisse         ###   ########.fr       */
+/*   Created: 2022/08/15 23:23:38 by megrisse          #+#    #+#             */
+/*   Updated: 2022/08/18 18:59:39 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i])
-		++i;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-}
-
-void	ft_error(void)
-{
-	write(1, "ERROR\n", 6);
-	exit(0);
-}
-
-void	read_instructions(t_stack *array, char *arg)
+void	do_instructions(t_stack *array, char *arg)
 {
 	if (ft_strcmp(arg, "sa\n") == 0)
 		sa(array, "");
@@ -53,5 +37,40 @@ void	read_instructions(t_stack *array, char *arg)
 	else if (ft_strcmp(arg, "rrr\n") == 0)
 		rrr(array);
 	else
-		ft_error();
+		print_error();
+}
+
+void	get_args(t_stack *array)
+{
+	char	*tab;
+
+	tab = get_next_line(0);
+	while (tab)
+	{
+		do_instructions(array, tab);
+		free(tab);
+		tab = get_next_line(0);
+	}
+	free(tab);
+}
+
+int	main(int ac, char **av)
+{
+	char		**tab;
+	t_stack		*stack;
+	int			i;
+	int			j;
+
+	stack = (t_stack *) malloc(sizeof(*stack));
+	tab = parse_to_stack(ac, av, &i);
+	stack->size = i;
+	stacks_init(&stack, i);
+	j = -1;
+	while (++j < i)
+		push_to_stack(stack, ft_atoi(tab[j]), j);
+	get_args(stack);
+	if (check_if_sorted(stack) == 1)
+		write (1, "OK\n", 3);
+	else
+		write (1, "KO\n", 3);
 }

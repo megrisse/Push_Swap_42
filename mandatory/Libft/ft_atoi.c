@@ -6,17 +6,23 @@
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 08:17:44 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/12 19:59:45 by megrisse         ###   ########.fr       */
+/*   Updated: 2022/08/16 18:18:34 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-long	ft_atoi(const char *str)
+void	ft_error(void)
 {
-	int	x;
-	int	signe;
-	int	rst;
+	write (1, "ERROR\n", 6);
+	exit (0);
+}
+
+int	ft_atoi(char *str)
+{
+	int		x;
+	int		signe;
+	long	rst;
 
 	x = 0;
 	signe = 1;
@@ -33,5 +39,7 @@ long	ft_atoi(const char *str)
 	{
 		rst = rst * 10 + (str[x++] - 48);
 	}
+	if ((rst * signe) > INT_MAX || (rst * signe) < INT_MIN)
+		ft_error();
 	return (rst * signe);
 }

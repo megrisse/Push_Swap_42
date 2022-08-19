@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: megrisse <megrisse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 03:39:27 by megrisse          #+#    #+#             */
-/*   Updated: 2022/06/18 03:44:01 by megrisse         ###   ########.fr       */
+/*   Created: 2022/08/15 23:21:42 by megrisse          #+#    #+#             */
+/*   Updated: 2022/08/15 23:47:43 by megrisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#ifndef CHECKER_H
+# define CHECKER_H
 
-void	ft_bzero(void *s, int n)
-{
-	unsigned char	*ptr;
-	int				x;
+# include <stdlib.h>
+# include <unistd.h>
+# include <limits.h>
+# include <stdio.h>
+# include "../mandatory/push_swap.h"
 
-	ptr = (unsigned char *) s;
-	x = 0;
-	while (n > 0)
-	{
-		ptr[x] = 0;
-		x++;
-		n--;
-	}
-}
+int		ft_strcmp(char *s1, char *s2);
+void	ss(t_stack *array, char *str);
+void	rr_b(t_stack *array);
+void	rrr(t_stack *array);
+void	print_error(void);
+char	*get_next_line(int fd);
+
+#endif
